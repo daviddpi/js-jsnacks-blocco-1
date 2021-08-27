@@ -174,26 +174,37 @@
 *  Mostriamo in HTML le due liste in parallelo
 */
 
-// let numeriPari = [2, 4, 6, 8, 10, 12, 14, 20];
-// let numeriDispari = [3, 15];
+let numeriPari = [2, 4, 6, 8, 10, 12, 14, 20];
+let numeriDispari = [3, 15, 17, 21, 35, 47, 89, 93, 95, 97, 99];
 
-// do{
-//     let randomNum = Math.floor(Math.random()*100);
-//     if(randomNum % 2 != 0){
-//         numeriDispari.push(randomNum);
-//     }
+if(numeriDispari.length < numeriPari.length){ //se i numeri dispari sono di meno li aggiunge
+    do{
+        let randomNum = Math.floor(Math.random()*100);
+        if(randomNum % 2 != 0){
+            numeriDispari.push(randomNum);
+        }
+    
+    } while(numeriDispari.length < numeriPari.length);
+} else if(numeriPari.length < numeriDispari.length){ //se i numeri pari sono di meno li aggiunge
+    do{
+        randomNum = Math.floor(Math.random()*100);
+        if(randomNum % 2 == 0){
+            numeriPari.push(randomNum);
+        }
+    
+    } while(numeriPari.length < numeriDispari.length);
+}
 
-// } while(numeriDispari.length < numeriPari.length);
+numeriDispari.sort(function(a, b){return a-b}); //ordine i numeri dispari
+numeriPari.sort(function(a, b){return a-b}); //ordine i numeri pari
 
-// numeriDispari.sort(function(a, b){return a-b}); //ordine i numeri dispari
+document.getElementById("numeri-dispari").innerHTML = "<li>Numeri dispari: <br></li>";
+document.getElementById("numeri-pari").innerHTML = "<li>Numeri pari: <br></li>";
 
-// document.getElementById("numeri-dispari").innerHTML = "<li>Numeri dispari: <br></li>";
-// document.getElementById("numeri-pari").innerHTML = "<li>Numeri pari: <br></li>";
+for(var i = 0; i < numeriPari.length; i++){
+    document.getElementById("numeri-pari").innerHTML += "<li>" + numeriPari[i] + "</li>";
+    document.getElementById("numeri-dispari").innerHTML += "<li>" + numeriDispari[i] + "</li>";
+}
 
-// for(var i = 0; i < numeriPari.length; i++){
-//     document.getElementById("numeri-pari").innerHTML += "<li>" + numeriPari[i] + "</li>";
-//     document.getElementById("numeri-dispari").innerHTML += "<li>" + numeriDispari[i] + "</li>";
-// }
-
-// console.log(numeriPari);
-// console.log(numeriDispari);
+console.log(numeriPari);
+console.log(numeriDispari);
